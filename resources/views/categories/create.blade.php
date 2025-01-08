@@ -1,0 +1,51 @@
+<x-admin-layout>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}",
+                toast: true,
+                position: 'top',
+                timer: 3000,
+                showConfirmButton: false,
+            });
+        @endif
+
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ session('error') }}",
+                toast: true,
+                position: 'top',
+                timer: 3000,
+                showConfirmButton: false,
+            });
+        @endif
+    </script>
+    <div class="page-wrapper">
+        <!-- Page Content -->
+        <div class="page-content">
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="px-4 col-md-12">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">Add Product</h4>
+                                </div>
+                                <div class="card-body">
+    <h1>Add Category</h1>
+    <form action="{{ route('categories.store') }}" method="POST">
+        @csrf
+        <div class="form-group mb-3">
+            <label for="name">Category Name</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+</x-admin-layout>
